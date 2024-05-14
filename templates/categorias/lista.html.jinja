@@ -1,0 +1,30 @@
+{% extends 'base.html.jinja' %}
+
+{% block content %}
+<h1>{% block title %} Mi lista {% endblock %}</h1>
+<table id="customers">
+  <tr>
+    <th>Nombre</th>
+    <th>Descripción</th>
+    <th>Acciones</th>
+  </tr>
+    {% for element in elementsList %}
+        <tr>
+            <td>{{ element.nombre }}</td>
+            <td>{{ element.descripcion }}</td>
+            <td class="acciones"><button class="button button1" onclick="window.location.href='/categoria/detail/{{element._id}}'" class="button button1">Detalle</button>
+                <button class="button button2" onclick="window.location.href='/categoria/update/{{element._id}}'" class="button button1">Modificar</button>
+                <form action="{{ url_for('delete_element', id=element._id) }}" method="post">
+                    <input class="button button3" type="submit" value="Eliminar">
+                </form>
+        </tr>
+    {% endfor %}
+    </table>
+    <!--<ul>
+        {% for element in elementsList %}
+        <li>
+           Nombre: {{ element.nombre }} Edad: {{ element.edad }} <a href="/{{element._id}}">Detalle<a/> <a href="/update/{{element._id}}">Modificar<a/> <a href="/delete/{{element._id}}">Eliminar</a>
+        </li>        
+        {% endfor %}
+    </ul>-->
+{% endblock %}

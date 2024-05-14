@@ -1,0 +1,27 @@
+{% extends 'base.html.jinja' %}
+
+{% block content %}
+
+    <h1> {% block title %} Modifica el contacto {% endblock %}</h1>
+        <form method="POST" Content-Type='application/json'>
+            <div>
+                <label for="nombre">Título del mensaje </label><br>
+                <input type="text" name="nombre" 
+                placeholder="Nombre"
+                value="{{ element.nombre }}">
+                <br>
+            </div> 
+            <div>
+                <label for="descripcion">Descripción </label><br>
+                <textarea type="text" 
+                name="descripcion"
+                placeholder="Descripción"
+                rows="8"
+                cols="30">
+                    {{ element.descripcion }}
+                </textarea>
+                <br>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+{% endblock %}
