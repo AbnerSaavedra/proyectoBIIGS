@@ -1,9 +1,12 @@
 {% extends 'base.html.jinja' %}
 
 {% block content %}
-<h1>{% block title %} Detalle de contacto {% endblock %}</h1>
+<h1>{% block title %} Detalle del examen {% endblock %}</h1>
     <div class="detail">
         <p>Nombre: {{ element.nombre }}</p>
-        <p>Edad: {{ element.edad }}</p>
+        <p>Categoría: {{ element.categoria }}</p>
+        <p>Tipo: {{ element.tipo }}</p>
+        <p>Precio: {{ element.precio }}</p>
+        <p>Indicaciones: {{ element.indicaciones }}</p>
     </div>
 {% endblock %}

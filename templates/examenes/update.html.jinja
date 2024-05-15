@@ -5,19 +5,43 @@
     <h1> {% block title %} Modifica el contacto {% endblock %}</h1>
         <form method="POST" Content-Type='application/json'>
             <div>
-                <label for="nombre">Título del mensaje </label><br>
+                <label for="nombre">Editar examen </label><br>
                 <input type="text" name="nombre" 
                 placeholder="Nombre"
                 value="{{ element.nombre }}">
                 <br>
             </div> 
             <div>
-                <label for="edad">Edad </label><br>
-                <input type="number" name="edad" 
-                placeholder="Edad"
-                value="{{ element.edad }}">
+                <label for="categoria">Categoría </label><br>
+                <select name="categoria" width="300px">
+                    <option value="seleccione">Seleccione categoría...</option>
+                    {% for o in listaCategorias %}
+                        <option value="{{ o._id }}" {% if element.categoria == o.nombre %} selected{% endif %}>{{ o.nombre }}</option>
+                    {% endfor %}
+                </select>
                 <br>
             </div>
+            <div>
+                <label for="precio">Precio </label><br>
+                <input type="number" name="precio" 
+                placeholder="Precio"
+                value="{{ element.precio }}">
+                <br>
+            </div>
+            <div>
+                <label for="tipoMuestra">Tipo muestra </label><br>
+                <input type="text" name="tipoMuestra" 
+                placeholder="Tipo muestra"
+                value="{{ element.tipo }}">
+                <br>
+            </div>
+            <div>
+                <label for="indicaciones">Indicaciones </label><br>
+                <input type="text" name="indicaciones" 
+                placeholder="Indicaciones"
+                value="{{ element.indicaciones }}">
+                <br>
+            </div> 
             <input type="submit" value="Submit">
         </form>
 {% endblock %}

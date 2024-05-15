@@ -2,10 +2,10 @@
 
 {% block content %}
 
-    <h1> {% block title %} Deja un mensaje {% endblock %}</h1>
+    <h1> {% block title %} Agregar categoría {% endblock %}</h1>
         <form method="POST" Content-Type='application/json'>
             <div>
-                <label for="nombre">Título del mensaje </label><br>
+                <label for="nombre">Nombre categoría </label><br>
                 <input type="text" name="nombre" 
                 placeholder="Nombre"
                 value="{{ request.form['nombre'] }}">

@@ -1,20 +1,22 @@
-{% extends '../base.html.jinja' %}
+{% extends 'base.html.jinja' %}
 
 {% block content %}
 <h1>{% block title %} Mi lista {% endblock %}</h1>
+<a href="{{url_for('addExamen')}}">Add examen</a>
 <table id="customers">
   <tr>
     <th>Nombre</th>
-    <th>Edad</th>
-    <th>Acciones</th>
+    <th>Categoría</th>
+    <th>Tipo muestra</th>
   </tr>
     {% for element in elementsList %}
         <tr>
             <td>{{ element.nombre }}</td>
-            <td>{{ element.edad }}</td>
-            <td><button class="button button1" onclick="window.location.href='/{{element._id}}'" class="button button1">Detalle</button>
-                <button class="button button2" onclick="window.location.href='/update/{{element._id}}'" class="button button1">Modificar</button>
-                <button class="button button3" onclick="window.location.href='/delete/{{element._id}}'" class="button button1">Eliminar</button>
+            <td>{{ element.categoria }}</td>
+            <td>{{ element.tipo }}</td>
+            <td><button class="button button1" onclick="window.location.href='/examen/detail/{{element._id}}'" class="button button1">Detalle</button>
+                <button class="button button2" onclick="window.location.href='/examen/update/{{element._id}}'" class="button button1">Modificar</button>
+                <button class="button button3" onclick="window.location.href='/examen/delete/{{element._id}}'" class="button button1">Eliminar</button>
             <!--<a href="/{{element._id}}">Detalle<a/> <a href="/update/{{element._id}}">Modificar<a/> <a href="/delete/{{element._id}}">Eliminar</a>--></td>
         </tr>
     {% endfor %}
