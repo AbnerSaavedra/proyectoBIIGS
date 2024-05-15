@@ -76,7 +76,7 @@ def addExamen():
             'indicaciones': indicaciones
         }
         examenes.insert_one(object)
-        return redirect(url_for('getCategoriaList'))
+        return redirect(url_for('getExamenList'))
     listaCategorias = categorias.find()
     return render_template("/examenes/add.html.jinja", listaCategorias = listaCategorias)
 
@@ -92,9 +92,13 @@ def updateExamen(id):
     element = examenes.find_one({'_id': oid})
     if request.method == "POST":
         new_element = request.form
+    
         examenes.replace_one({'_id': oid}, 
                                          {'nombre': new_element['nombre'],
-                                          'descripcion': new_element['descripcion']})    
+                                          'categoria': new_element['categoria'],
+                                          'precio': new_element['precio'],
+                                          'tipo': new_element['tipoMuestra'],
+                                          'indicaciones': new_element['indicaciones']})    
         return redirect(url_for('getExamenList'))
     listaCategorias = categorias.find()
     return render_template("/examenes/update.html.jinja", element=element, listaCategorias = listaCategorias, id=id)
@@ -103,7 +107,7 @@ def updateExamen(id):
 def deleteExamen(id):
     oid = ObjectId(id)
     examenes.delete_one({'_id': oid})
-    return redirect(url_for('getList'))
+    return redirect(url_for('getExamenList'))
 
 if __name__ == "__main__":
     app.run(debug=True)

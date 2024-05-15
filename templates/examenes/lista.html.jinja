@@ -1,7 +1,7 @@
 {% extends 'base.html.jinja' %}
 
 {% block content %}
-<h1>{% block title %} Mi lista {% endblock %}</h1>
+<h1>{% block title %} Examenes {% endblock %}</h1>
 <a href="{{url_for('addExamen')}}">Add examen</a>
 <table id="customers">
   <tr>
@@ -16,7 +16,9 @@
             <td>{{ element.tipo }}</td>
             <td><button class="button button1" onclick="window.location.href='/examen/detail/{{element._id}}'" class="button button1">Detalle</button>
                 <button class="button button2" onclick="window.location.href='/examen/update/{{element._id}}'" class="button button1">Modificar</button>
-                <button class="button button3" onclick="window.location.href='/examen/delete/{{element._id}}'" class="button button1">Eliminar</button>
+                <form action="{{ url_for('deleteExamen', id=element._id) }}" method="post">
+                    <input class="button button3" type="submit" value="Eliminar">
+                </form>
             <!--<a href="/{{element._id}}">Detalle<a/> <a href="/update/{{element._id}}">Modificar<a/> <a href="/delete/{{element._id}}">Eliminar</a>--></td>
         </tr>
     {% endfor %}
